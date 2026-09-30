@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-<rect width="512" height="512" rx="112" fill="#090909"/>
-<text x="256" y="323" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="152" font-weight="900" letter-spacing="-10" fill="#fff">GR</text>
-<path d="M263 68 L225 188 L267 188 L226 294 L303 214 L272 214 L315 68 Z" fill="#e50914"/>
-<text x="256" y="423" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="118" font-weight="900" letter-spacing="4" fill="#fff">ND</text>
+<defs>
+<linearGradient id="silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#f4f4f4"/><stop offset="1" stop-color="#bdbdbd"/></linearGradient>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000" flood-opacity=".9"/></filter>
+</defs>
+<rect width="512" height="512" rx="112" fill="#000"/>
+<g filter="url(#shadow)" fill="url(#silver)" stroke="#fff" stroke-width="2" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-style="italic"><text x="42" y="323" font-size="170" letter-spacing="-14">GR</text><text x="327" y="323" font-size="170" letter-spacing="-14">ND</text></g>
+<g filter="url(#glow)"><path d="M300 64 L232 221 L270 213 L204 405 L320 210 L280 220 Z" fill="#ff1717" stroke="#ff5a5a" stroke-width="2"/></g>
 </svg>
