@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f7a4a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="SOUL">
+<link rel="manifest" href="soul-manifest.json">
+<link rel="apple-touch-icon" href="soul-icon.svg">
+<title>SOUL — Mental & Spiritual Health</title>
+<style>
+:root{--sky:#8ed8f8;--sky2:#eaf8ff;--green:#087443;--green2:#0f8a55;--bg:#f7fbfc;--card:#fff;--ink:#12332b;--muted:#6b7e79;--line:#dcebea}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,var(--sky2),var(--bg) 230px);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:90px}button,input,textarea,select{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 18px}.brand{font-size:27px;font-weight:900;letter-spacing:3px;color:var(--green)}
+.container{max-width:760px;margin:auto;padding:16px}.hero{padding:8px 0 14px}.eyebrow{font-size:11px;font-weight:900;letter-spacing:1.7px;color:var(--green)}.title{font-size:32px;font-weight:900;margin:4px 0}.sub{color:var(--muted);line-height:1.45}
+.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 5px 20px rgba(8,116,67,.05)}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:var(--sky2);border-radius:15px;padding:13px}.stat b{font-size:21px;color:var(--green)}.muted{color:var(--muted);font-size:13px}
+.progress{height:9px;background:#dceceb;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sky),var(--green2));border-radius:99px}
+.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:800;background:#e9f3f2;color:var(--green)}.btn.green{background:var(--green);color:#fff}.btn.sky{background:#dff5ff;color:#17677e}.btn.full{width:100%}
+.item{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.check{width:23px;height:23px;accent-color:var(--green);flex:0 0 auto}.counter{margin-left:auto;display:flex;align-items:center;gap:7px}.counter b{min-width:76px;text-align:center}.small{padding:8px 10px;border-radius:10px}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:7px 6px max(7px,env(safe-area-inset-bottom))}.nav button{background:none;border:0;color:#78908a;padding:7px 2px}.nav button.active{color:var(--green);font-weight:800}.nav span{display:block;font-size:10px;margin-top:3px}
+input,textarea{width:100%;background:#fff;color:var(--ink);border:1px solid #cfe1df;border-radius:12px;padding:12px;outline:none}textarea{min-height:190px;resize:vertical}.form{display:grid;gap:10px}.hidden{display:none!important}.pill{display:inline-block;background:#e5f6ef;color:var(--green);font-size:12px;font-weight:800;border-radius:99px;padding:5px 9px}.verse{background:#f1fbff;border-left:4px solid var(--sky);padding:13px;border-radius:10px;line-height:1.5}
+</style>
+</head>
+<body>
+<header><div class="brand">SOUL</div></header>
+<main class="container">
+<section id="today">
+<div class="hero"><div class="eyebrow">MENTAL & SPIRITUAL HEALTH</div><div class="title">Assalamu Alaikum 🤍</div><div class="sub" id="todayDate"></div></div>
+<div class="card"><div class="row"><b>Today's journey</b><b id="completion">0%</b></div><div class="progress" style="margin-top:10px"><i id="completionBar"></i></div></div>
+<div class="grid">
+<div class="stat"><div class="muted">Prayers</div><b id="prayerStat">0 / 5</b></div>
+<div class="stat"><div class="muted">Dhikr</div><b id="dhikrStat">0%</b></div>
+<div class="stat"><div class="muted">Qur'an</div><b id="quranStat">0 / 2 pages</b></div>
+<div class="stat"><div class="muted">Reading</div><b id="bookStat">0 / 10 pages</b></div>
+</div>
+<div class="card"><h3>☪️ Daily Prayers</h3><div id="prayers"></div></div>
+<div class="card"><h3>📿 Daily Dhikr</h3>
+<div class="item"><div><b>Astaghfirullah</b><div class="muted">Your personal daily target</div></div><div class="counter"><button class="btn small" onclick="dhikr(-100,'istighfar')">−100</button><b id="istighfarCount">0 / 1947</b><button class="btn green small" onclick="dhikr(100,'istighfar')">+100</button></div></div>
+<div class="item"><div><b>Alhamdulillah</b><div class="muted">Your personal daily target</div></div><div class="counter"><button class="btn small" onclick="dhikr(-100,'hamdulillah')">−100</button><b id="hamdulillahCount">0 / 1480</b><button class="btn green small" onclick="dhikr(100,'hamdulillah')">+100</button></div></div>
+<div class="grid" style="margin-top:10px"><button class="btn sky" onclick="dhikr(1,'istighfar')">+1 Istighfar</button><button class="btn sky" onclick="dhikr(1,'hamdulillah')">+1 Alhamdulillah</button></div>
+</div>
+<div class="card"><h3>📖 Qur'an</h3><div class="verse">Current position: <b>Surah 3:72</b><br><span class="muted">Daily target: 2 pages</span></div><div class="row" style="margin-top:12px"><span id="quranPagesText">0 / 2 pages</span><button class="btn green" onclick="addQuran()">+ 1 page</button></div></div>
+<div class="card"><h3>📚 Other Reading</h3><div class="row"><span id="bookPagesText">0 / 10 pages</span><button class="btn green" onclick="addBook()">+ 1 page</button></div></div>
+</section>
+
+<section id="journal" class="hidden">
+<div class="hero"><div class="eyebrow">REFLECTION</div><div class="title">My Journal</div><div class="sub">A private space to slow down, reflect and be honest with yourself.</div></div>
+<div class="card"><div class="form"><textarea id="journalText" placeholder="How are you feeling today? What are you grateful for? What is on your heart?"></textarea><button class="btn green full" onclick="saveJournal()">Save today's reflection</button></div></div>
+<div class="card"><h3>Past reflections</h3><div id="journalHistory"></div></div>
+</section>
+
+<section id="faith" class="hidden">
+<div class="hero"><div class="eyebrow">SPIRITUAL LIFE</div><div class="title">Faith</div><div class="sub">Build a consistent relationship with Allah through small daily acts.</div></div>
+<div class="card"><h3>Today's spiritual habits</h3><div id="faithSummary"></div></div>
+<div class="card"><h3>Current Qur'an position</h3><p>Surah <b>3:72</b></p><span class="pill">Continue from here</span></div>
+</section>
+
+<section id="settings" class="hidden">
+<div class="hero"><div class="eyebrow">SOUL</div><div class="title">Settings</div><div class="sub">Your targets are personal and can be adjusted later.</div></div>
+<div class="card"><h3>Current daily targets</h3><div class="item"><b>Istighfar</b><span class="pill">1,947</span></div><div class="item"><b>Alhamdulillah</b><span class="pill">1,480</span></div><div class="item"><b>Qur'an</b><span class="pill">2 pages</span></div><div class="item"><b>Other books</b><span class="pill">10 pages</span></div></div>
+<div class="card"><h3>Data</h3><button class="btn full" onclick="resetToday()">Reset today's progress</button></div>
+</section>
+</main>
+<nav class="nav">
+<button class="active" onclick="tab('today',this)">☀️<span>Today</span></button>
+<button onclick="tab('journal',this)">📝<span>Journal</span></button>
+<button onclick="tab('faith',this)">☪️<span>Faith</span></button>
+<button onclick="tab('settings',this)">⚙️<span>Settings</span></button>
+</nav>
+<script>
+const KEY='soul_v1';const PRAYERS=['Fajr','Dhuhr','Asr','Maghrib','Isha'];const dateKey=()=>new Date().toISOString().slice(0,10);
+function state(){return JSON.parse(localStorage.getItem(KEY)||'{}')}function save(s){localStorage.setItem(KEY,JSON.stringify(s))}
+function today(){const s=state(),k=dateKey();s.days=s.days||{};s.days[k]=s.days[k]||{prayers:{},istighfar:0,hamdulillah:0,quran:0,books:0,journal:''};return [s,k,s.days[k]]}
+function render(){const [s,k,d]=today();document.getElementById('todayDate').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric',year:'numeric'});document.getElementById('prayers').innerHTML=PRAYERS.map(p=>'<div class="item"><input class="check" type="checkbox" '+(d.prayers[p]?'checked':'')+' onchange="prayer(\''+p+'\',this.checked)"><b>'+p+'</b></div>').join('');document.getElementById('prayerStat').textContent=Object.values(d.prayers).filter(Boolean).length+' / 5';document.getElementById('istighfarCount').textContent=d.istighfar+' / 1947';document.getElementById('hamdulillahCount').textContent=d.hamdulillah+' / 1480';document.getElementById('quranPagesText').textContent=d.quran+' / 2 pages';document.getElementById('quranStat').textContent=d.quran+' / 2 pages';document.getElementById('bookPagesText').textContent=d.books+' / 10 pages';document.getElementById('bookStat').textContent=d.books+' / 10 pages';const dh=Math.min(1,d.istighfar/1947,d.hamdulillah/1480);document.getElementById('dhikrStat').textContent=Math.round(dh*100)+'%';const parts=[Object.values(d.prayers).filter(Boolean).length/5,dh,Math.min(1,d.quran/2),Math.min(1,d.books/10),d.journal?1:0];const pc=Math.round(parts.reduce((a,b)=>a+b,0)/parts.length*100);document.getElementById('completion').textContent=pc+'%';document.getElementById('completionBar').style.width=pc+'%';document.getElementById('journalText').value=d.journal||'';renderHistory(s);document.getElementById('faithSummary').innerHTML='<div class="item"><b>Prayers</b><span>'+Object.values(d.prayers).filter(Boolean).length+' / 5</span></div><div class="item"><b>Dhikr</b><span>'+d.istighfar+' Istighfar · '+d.hamdulillah+' Alhamdulillah</span></div><div class="item"><b>Qur\'an</b><span>'+d.quran+' pages</span></div><div class="item"><b>Other reading</b><span>'+d.books+' pages</span></div>'}
+function prayer(p,v){const [s,,d]=today();d.prayers[p]=v;save(s);render()}function dhikr(n,type){const [s,,d]=today();d[type]=Math.max(0,d[type]+n);save(s);render()}function addQuran(){const [s,,d]=today();d.quran=Math.min(2,d.quran+1);save(s);render()}function addBook(){const [s,,d]=today();d.books=Math.min(10,d.books+1);save(s);render()}function saveJournal(){const [s,,d]=today();d.journal=document.getElementById('journalText').value.trim();save(s);render();alert('Reflection saved 🤍')}function renderHistory(s){const el=document.getElementById('journalHistory');const arr=Object.entries(s.days||{}).filter(([,d])=>d.journal).sort((a,b)=>b[0].localeCompare(a[0]));el.innerHTML=arr.length?arr.map(([k,d])=>'<div class="item"><div><b>'+k+'</b><div style="margin-top:5px;line-height:1.5">'+escapeHtml(d.journal)+'</div></div></div>').join(''):'<div class="muted">Your reflections will appear here.</div>'}function escapeHtml(x){return x.replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}function tab(id,b){['today','journal','faith','settings'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}function resetToday(){if(confirm('Reset all of today\'s SOUL progress?')){const s=state();if(s.days)delete s.days[dateKey()];save(s);render()}}
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));render();
+</script>
+</body></html>
