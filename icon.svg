@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#090909"/><text x="256" y="325" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="205" fill="#fff">GR</text><path d="M278 65l-58 170h48l-42 215 128-245h-58l62-140z" fill="#e50914"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="112" fill="#090909"/>
+<text x="256" y="323" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="152" font-weight="900" letter-spacing="-10" fill="#fff">GR</text>
+<path d="M263 68 L225 188 L267 188 L226 294 L303 214 L272 214 L315 68 Z" fill="#e50914"/>
+<text x="256" y="423" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="118" font-weight="900" letter-spacing="4" fill="#fff">ND</text>
+</svg>
